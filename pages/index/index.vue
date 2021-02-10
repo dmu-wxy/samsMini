@@ -1,8 +1,24 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+		<view class="cu-bar tabbar bg-white shadow foot">
+			<view class="action">
+				<view class="cuIcon-cu-image">
+					<image src="/static/tabbar/basics_cur.png"></image>
+				</view>
+				<view class="text-green">首页</view>
+			</view>
+			<view class="action">
+				<view class="cuIcon-cu-image">
+					<image src="/static/tabbar/component.png"></image>
+				</view>
+				<view class="text-gray">地图</view>
+			</view>
+			<view class="action">
+				<view class="cuIcon-cu-image">
+					<image src="/static/tabbar/plugin.png"></image>
+				</view>
+				<view class="text-gray">其他</view>
+			</view>
 		</view>
 	</view>
 </template>

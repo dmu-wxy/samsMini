@@ -1,0 +1,9 @@
+/**index.wxss**/
+.animalsList{
+  width: 100vm;
+  height: 100vm;
+}
+.bottom{
+  text-align: center;
+  color: rgb(135, 153, 163);
+}
