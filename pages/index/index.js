@@ -4,22 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-    animals:[
-      {
-        aid: '0',
-        aname: "哆啦A梦",
-        breed: "机器猫",
-        gender: "公",
-        p_addr: "四海楼"
-      },
-      {
-        aid: '1',
-        aname: "加菲猫",
-        breed: "短耳猫",
-        gender: "公",
-        p_addr: "湖畔书屋"
-      }
-    ]
+    'animals':[],
+    'total':'-1'
   },
   // 事件处理函数
   bindViewTap() {
@@ -28,32 +14,21 @@ Page({
     })
   },
   onLoad() {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+      var that = this;//把this对象复制到临时变量that
+      wx.request({
+        url: 'https://www.smartdog.top/sams/animal/info/', //仅为示例，并非真实的接口地址
+        data: {
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success (res) {
+          if(res){
+            that.setData({animals: res.data.data,total: res.data});
+          }
         }
       })
-    }
+    
   },
   getUserInfo(e) {
     console.log(e)
@@ -62,5 +37,9 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  getAnimalInfo(){
+    console.log("调用了getAnimalInfo函数");
+    
   }
 })

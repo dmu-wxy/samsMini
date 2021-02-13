@@ -1,33 +1,38 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/map/map",
     "pages/my/my"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#328EEB",
     "navigationBarTitleText": "samsMini",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#000000",
     "selectedColor": "#328EEB",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "image/home.png",
-      "selectedIconPath": "image/home_selected.png"
-    },{
-      "pagePath": "pages/map/map",
-      "text": "地图",
-      "iconPath": "image/map.png",
-      "selectedIconPath": "image/map_selected.png"
-    },{
-      "pagePath": "pages/my/my",
-      "text": "其他",
-      "iconPath": "image/other.png",
-      "selectedIconPath": "image/other_selected.png"
-    }]
-  }
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home_selected.png"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "text": "地图",
+        "iconPath": "image/map.png",
+        "selectedIconPath": "image/map_selected.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "其他",
+        "iconPath": "image/other.png",
+        "selectedIconPath": "image/other_selected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap40.json"
 }
