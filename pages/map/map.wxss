@@ -1,5 +1,5 @@
 /* pages/map/map.wxss */
 .mapPage{
-  width: 100vm;
+  width: 750rpx;
   height: 100vm;
 }

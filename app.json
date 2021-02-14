@@ -34,5 +34,10 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap40.json"
+  "sitemapLocation": "sitemap40.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "查看附近的浏览动物时需要你的位置信息"
+    }
+  }
 }

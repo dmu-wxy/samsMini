@@ -1,2 +1,10 @@
 <!--pages/map/map.wxml-->
-<map class="mapPage"></map>
+<map
+      id="myMap"
+      style="width:{{ScreenTotalW}}rpx;height:{{ScreenTotalH}}rpx"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      covers="{{covers}}"
+      show-location
+    ></map>
