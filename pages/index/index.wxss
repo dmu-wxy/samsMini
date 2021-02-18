@@ -6,4 +6,5 @@
 .bottom{
   text-align: center;
   color: rgb(135, 153, 163);
+  margin-bottom: 15px;
 }

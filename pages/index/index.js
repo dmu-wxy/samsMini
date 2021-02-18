@@ -5,41 +5,46 @@ const app = getApp()
 Page({
   data: {
     'animals':[],
-    'total':'-1'
+    'total':0,
+    'pageNum':1,
+    'size':10
   },
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  onReady: function () {
+    wx.stopPullDownRefresh();
+    var that = this;
+    that.setData({
+      pageNum:1,
+      size:10,
+      total:0,
+      animals:[]
+    });
+    that.getDateList();
   },
-  onLoad() {
-      var that = this;//把this对象复制到临时变量that
-      wx.request({
-        url: 'https://www.smartdog.top/sams/animal/info/', //仅为示例，并非真实的接口地址
-        data: {
-        },
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success (res) {
-          if(res){
-            that.setData({animals: res.data.data,total: res.data});
-          }
+  onPullDownRefresh: function () {
+    this.onReady(); //重新加载onLoad()
+  },
+  getDateList: function(){
+    var that = this;//把this对象复制到临时变量that
+    wx.request({
+      url: 'https://www.smartdog.top/sams/system/config/animal/?page=' + that.data.pageNum + '&size=' + that.data.size, 
+      data: {
+      },
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        if(res){
+          var pageNum = that.data.pageNum + 1;
+          var animals = that.data.animals;
+          var newAnimalsData = res.data.data;
+          animals = animals.concat(newAnimalsData);
+          that.setData({animals: animals,total: res.data.total,pageNum:pageNum});
         }
-      })
-    
-  },
-  getUserInfo(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      }
     })
   },
-  getAnimalInfo(){
-    console.log("调用了getAnimalInfo函数");
-    
-  }
+  onReachBottom: function () { 
+    var that = this;
+    that.getDateList();//重新调用请求获取下一页数据
+  },
 })
